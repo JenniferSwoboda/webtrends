@@ -1,0 +1,64 @@
+<div class="section-green--bg">
+    {% if colors %}
+    <div class="section-green">
+        <div class="section-left section-text">
+            <span class="headline-line"></span>
+            <h2>Top 6 Colors</h2>
+            <span class="headline-line"></span>
+            <p>The following five colors are the most popular text and background colors of all crawled websites.</p>
+        </div>
+        <div class="section-right">
+            <div class="color-wrapper">
+                <div class="color-item" style="background-color:{{colors[0][0]}}">
+                    <div class="color-inner">
+                        <span class="color-name">{{colors[0][0]}}</span>
+                        <span class="color-percent">{{colors[0][1]}}%</span>
+                    </div>
+                </div>
+            </div>
+            <div class="color-wrapper">
+                <div class="color-item" style="background-color:{{colors[1][0]}}">
+                    <div class="color-inner">
+                        <span class="color-name">{{colors[1][0]}}</span>
+                        <span class="color-percent">{{colors[1][1]}}%</span>
+                    </div>
+                </div>
+            </div>
+            <div class="color-wrapper">
+                <div class="color-item" style="background-color:{{colors[2][0]}}">
+                    <div class="color-inner">
+                        <span class="color-name">{{colors[2][0]}}</span>
+                        <span class="color-percent">{{colors[2][1]}}%</span>
+                    </div>
+                </div>
+            </div>
+            <div class="color-wrapper">
+                <div class="color-item" style="background-color:{{colors[3][0]}}">
+                    <div class="color-inner">
+                        <span class="color-name">{{colors[3][0]}}</span>
+                        <span class="color-percent">{{colors[3][1]}}%</span>
+                    </div>
+                </div>
+            </div>
+            <div class="color-wrapper">
+                <div class="color-item" style="background-color:{{colors[4][0]}}">
+                    <div class="color-inner">
+                        <span class="color-name">{{colors[4][0]}}</span>
+                        <span class="color-percent">{{colors[4][1]}}%</span>
+                    </div>
+                </div>
+            </div>
+            <div class="color-wrapper">
+                <div class="color-item" style="background-color:{{colors[5][0]}}">
+                    <div class="color-inner">
+                        <span class="color-name">{{colors[5][0]}}</span>
+                        <span class="color-percent">{{colors[5][1]}}%</span>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    {% endif %}
+</div>

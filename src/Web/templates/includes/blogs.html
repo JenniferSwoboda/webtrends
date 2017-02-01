@@ -1,0 +1,12 @@
+<h2>Blogs:</h2>
+{% if blogs %}
+    {% for blog in blogs %}
+        <p>
+        {% for b in blog %}
+            {{ b }}
+        {% endfor %}
+        </p>
+    {% endfor %}
+{% else %}
+    <h1>No blogs</h1>
+{% endif %}

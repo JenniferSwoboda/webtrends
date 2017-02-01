@@ -1,0 +1,130 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <title>Website Analysis</title>
+    <meta name="description" content="Website Analysis">
+    <meta name="author" content="Jennifer Swoboda">
+
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../static/style.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="../../static/js/bootstrap.min.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+</head>
+<script>
+var url = window.location.href;
+
+$(function() {
+    // this will get the full URL at the address bar
+    console.log(url);
+    // passes on every "a" tag
+    $(".time-label a").each(function() {
+        console.log(this.href);
+        // checks if its the same on the address bar
+        if (url == (this.href)) {
+            console.log("YES");
+            $('.time-label').removeClass('selected');
+            console.log(this);
+            $(this).closest('div').addClass("selected");
+        }
+    });
+
+
+});
+
+</script>
+<body>
+
+    <div class="time-line--wrapper">
+        <div class="time-line">
+        </div>
+        <h3>Select URL Set</h3>
+
+        <div class="time-label--wrapper">
+
+            <div class="time-label selected global">
+                <a href="/">Top 100 Global</a>
+            </div>
+            <div class="time-label austria">
+                <a href="/AT">Top 100 Austria</a>
+            </div>
+            <div class="time-label design">
+                <a href="/design">Top 100 Design</a>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="bg-background"></div>
+    <div class="section">
+        <div class="section-headline">
+
+            <h1>WEBSITE ANALYSIS</h1>
+            <div class="section-headline--item">
+                <h2>Generating website analyses<br/> with automatic crawling processes</h2>
+                <h3>{{url_title}}</h3>
+            </div>
+        </div>
+        <div class="section-wrapper">
+            {% include 'includes/colors.html' %}
+        </div>
+
+        <div class="section-wrapper">
+            {% include 'includes/colorful.html' %}
+        </div>
+
+        <div class="section-wrapper">
+            {% include 'includes/fonts.html' %}
+        </div>
+
+        <div class="section-wrapper">
+            {% include 'includes/responsive.html' %}
+        </div>
+
+        <div class="section-wrapper">
+            {% include 'includes/web-servers.html' %}
+        </div>
+
+        <div class="section-wrapper">
+            {% include 'includes/js-frameworks.html' %}
+        </div>
+
+        <div class="section-wrapper">
+            {% include 'includes/programming-language.html' %}
+        </div>
+
+        <div class="section-wrapper">
+            {% include 'includes/markup_lang.html' %}
+        </div>
+
+        <div class="section-wrapper">
+            {% include 'includes/site_elements.html' %}
+        </div>
+
+        <div class="section-wrapper">
+            {% include 'includes/font-scripts.html' %}
+        </div>
+
+        <div class="section-wrapper">
+            {% include 'includes/encoding.html' %}
+        </div>
+
+        <div class="section-wrapper">
+            {% include 'includes/img_formats.html' %}
+        </div>
+
+        <div class="section-wrapper">
+            {% include 'includes/analysis_tool.html' %}
+        </div>
+    </div>
+
+
+
+
+</body>
+</html>

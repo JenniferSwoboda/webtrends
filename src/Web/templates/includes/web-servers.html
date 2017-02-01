@@ -1,0 +1,78 @@
+{% if web_servers %}
+<div class="section-green--bg section--500">
+    <div class="section-green ">
+        <div class="section-left section-text">
+            <span class="headline-line"></span>
+            <h2>Webservers</h2>
+            <span class="headline-line"></span>
+            <p>The following pie charts shows the distribution of web servers.</p>
+        </div>
+        <div class="section-right section-right-normal">
+            <div id="server-container" style="min-width: 310px; height: 500px; max-width: 600px; margin: 0 auto"></div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+<script>
+        $(function () {
+
+            // Make monochrome colors and set them as default for all pies
+            Highcharts.getOptions().plotOptions.pie.colors = (function () {
+                var colors = [],
+                        base = '#c4c857',
+                        i;
+
+                for (i = 0; i < 10; i += 1) {
+                    // Start out with a darkened base color (negative brighten), and end
+                    // up with a much brighter color
+                    colors.push(Highcharts.Color(base).brighten((i - 3) / 7).get());
+                }
+                return colors;
+            }());
+
+            // Build the chart
+            Highcharts.chart('server-container', {
+                chart: {
+                    plotBackgroundColor: null,
+                    plotBorderWidth: null,
+                    plotShadow: false,
+                    type: 'pie',
+                    style: {
+                        fontFamily: 'open_sanslight',
+                        fontSize: '20px'
+                    }
+                },
+                title: {
+                    text: ''
+                },
+                tooltip: {
+                    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                },
+                plotOptions: {
+                    pie: {
+                        allowPointSelect: true,
+                        cursor: 'pointer',
+                        dataLabels: {
+                            enabled: true,
+                            format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                            style: {
+                                color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black',
+                                fontSize: '12px',
+                                width: '100px'
+                            }
+                        }
+                    }
+                },
+
+                series: [{
+                    name: 'Brands',
+                    data: {{ web_servers| safe }}
+
+                }]
+            });
+            $('.highcharts-credits').addClass('hidden');
+            $('.highcharts-button').addClass('hidden');
+        });
+    </script>
+

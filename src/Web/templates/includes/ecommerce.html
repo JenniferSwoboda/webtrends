@@ -1,0 +1,12 @@
+<h2>Ecommerce:</h2>
+{% if ecommerce %}
+    {% for ec in ecommerce %}
+        <p>
+        {% for e in ec %}
+            {{ e }}
+        {% endfor %}
+        </p>
+    {% endfor %}
+{% else %}
+    <h1>No ecommerce</h1>
+{% endif %}

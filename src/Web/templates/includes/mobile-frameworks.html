@@ -1,0 +1,12 @@
+<h2>Mobile Frameworks:</h2>
+{% if mobile_frameworks %}
+    {% for framework in mobile_frameworks %}
+        <p>
+        {% for f in framework %}
+            {{ f }}
+        {% endfor %}
+        </p>
+    {% endfor %}
+{% else %}
+    <h1>No mobile Frameworks</h1>
+{% endif %}

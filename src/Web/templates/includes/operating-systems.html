@@ -1,0 +1,12 @@
+<h2>Operating Systems:</h2>
+{% if op_sys %}
+    {% for system in op_sys %}
+        <p>
+        {% for s in system %}
+            {{ s }}
+        {% endfor %}
+        </p>
+    {% endfor %}
+{% else %}
+    <h1>No operating systems</h1>
+{% endif %}

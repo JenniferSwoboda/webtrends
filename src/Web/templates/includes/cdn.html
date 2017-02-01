@@ -1,0 +1,12 @@
+ <h2>CDN:</h2>
+{% if cdn %}
+    {% for cd in cdn %}
+        <p>
+        {% for c in cd %}
+            {{ c }}
+        {% endfor %}
+        </p>
+    {% endfor %}
+{% else %}
+    <h1>No cdn</h1>
+{% endif %}

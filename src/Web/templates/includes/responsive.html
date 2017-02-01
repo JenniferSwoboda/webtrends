@@ -1,0 +1,85 @@
+{% if responsive %}
+
+<div class="section-wrapper">
+    <div class="section-wrapper">
+        <div class="section-yellow--bg">
+            <div class="section-yellow">
+                <div class="section-left section-big">
+                    <div id="resp-container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+
+                </div>
+                <div class="section-right section-small section-text">
+                    <span class="headline-line"></span>
+                    <h2>Mobile Optimization</h2>
+                    <span class="headline-line"></span>
+                    <p>Responsive or Adaptive? <br/> The following Pie Chart shows the distribution between responsive and adaptive websites.</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endif %}
+<script>
+        $(function () {
+
+            // Make monochrome colors and set them as default for all pies
+            Highcharts.getOptions().plotOptions.pie.colors = (function () {
+                var colors = [],
+                        base = '#fdcd67',
+                        i;
+
+                console.log(base);
+                for (i = 0; i < 10; i += 1) {
+                    // Start out with a darkened base color (negative brighten), and end
+                    // up with a much brighter color
+                    colors.push(Highcharts.Color(base).brighten((i - 3) / 7).get());
+                }
+                return colors;
+            }());
+
+
+            // Build the chart
+            Highcharts.chart('resp-container', {
+                chart: {
+                    plotBackgroundColor: null,
+                    plotBorderWidth: null,
+                    plotShadow: false,
+                    type: 'pie',
+                    style: {
+                        fontFamily: 'open_sanslight'
+                    }
+                },
+                title: {
+                    text: ''
+                },
+                tooltip: {
+                    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                },
+                plotOptions: {
+                    pie: {
+                        allowPointSelect: true,
+                        cursor: 'pointer',
+                        dataLabels: {
+                            enabled: true,
+                            format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                            style: {
+                                color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black',
+                                fontSize: '12px'
+                            }
+                        }
+                    }
+                },
+                series: [{
+                    name: 'Distribution',
+                    data: {{ responsive| safe }}
+
+                }]
+            });
+            $('.highcharts-credits').addClass('hidden');
+            $('.highcharts-button').addClass('hidden');
+
+        });
+    </script>
+

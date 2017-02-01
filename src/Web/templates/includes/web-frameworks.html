@@ -1,0 +1,12 @@
+<h2>Web Frameworks:</h2>
+{% if web_frameworks %}
+    {% for framework in web_frameworks %}
+        <p>
+        {% for f in framework %}
+            {{ f }}
+        {% endfor %}
+        </p>
+    {% endfor %}
+{% else %}
+    <h1>No web framework</h1>
+{% endif %}

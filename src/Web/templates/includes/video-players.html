@@ -1,0 +1,12 @@
+<h2>Video Players:</h2>
+{% if video_players %}
+    {% for player in video_players %}
+        <p>
+        {% for p in player %}
+            {{ p }}
+        {% endfor %}
+        </p>
+    {% endfor %}
+{% else %}
+    <h1>No video players</h1>
+{% endif %}

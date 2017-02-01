@@ -1,0 +1,82 @@
+{% if site_elem %}
+
+<div class="section-red--bg" style="height:450px;margin-left:40px !important; margin-bottom:250px;">
+    <div class="section-red" style="margin-left: -40px !important;">
+        <div class="section-left section-text section-small">
+
+            <span class="headline-line line-red"></span>
+            <h2>Site Elements</h2>
+            <span class="headline-line line-red"></span>
+            <p>Site elements are optional technical properties or features of websites. The following Pie Chart shows the distribution of different Site Elements.</p>
+
+        </div>
+        <div class="section-right section-big" style="top:0px; padding:10px;">
+            <div id="site_elem-container" style="min-width: 310px; height: 380px; max-width: 600px; margin: 0 auto"></div>
+
+        </div>
+    </div>
+</div>
+{% endif %}
+
+<script>
+        $(function () {
+
+            // Make monochrome colors and set them as default for all pies
+            Highcharts.getOptions().plotOptions.pie.colors = (function () {
+                var colors = [],
+                        base = '#cb5049',
+                        i;
+
+                console.log(base);
+                for (i = 0; i < 10; i += 1) {
+                    // Start out with a darkened base color (negative brighten), and end
+                    // up with a much brighter color
+                    colors.push(Highcharts.Color(base).brighten((i - 3) / 7).get());
+                }
+                return colors;
+            }());
+
+
+            // Build the chart
+            Highcharts.chart('site_elem-container', {
+                chart: {
+                    plotBackgroundColor: null,
+                    plotBorderWidth: null,
+                    plotShadow: false,
+                    type: 'pie',
+                    style: {
+                        fontFamily: 'open_sanslight'
+                    }
+                },
+                title: {
+                    text: ''
+                },
+                tooltip: {
+                    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                },
+                plotOptions: {
+                    pie: {
+                        allowPointSelect: true,
+                        cursor: 'pointer',
+                        dataLabels: {
+                            enabled: true,
+                            format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                            style: {
+                                color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black',
+                                fontSize: '12px',
+                                width: '100px'
+                            }
+                        }
+                    }
+                },
+                series: [{
+                    name: 'Distribution',
+                    data: {{ site_elem | safe }}
+                }]
+            });
+            $('.highcharts-credits').addClass('hidden');
+            $('.highcharts-button').addClass('hidden');
+
+        });
+    </script>
+
